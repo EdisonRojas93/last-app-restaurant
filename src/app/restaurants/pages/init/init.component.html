@@ -1,16 +1,10 @@
-<p>Restaurants works!</p>
+<div class="container">
 
-
-<div class="content">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <h1>Restaurantes</h1>
+    <ng-container *ngIf="restaurants$ | async as restaurants; else error">
+        <app-card [restaurant]="restaurant" *ngFor="let restaurant of restaurants"></app-card>
+    </ng-container>
+    <ng-template #error>Error al consultar</ng-template>
+    
 </div>
 

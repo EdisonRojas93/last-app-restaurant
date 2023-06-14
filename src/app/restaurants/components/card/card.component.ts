@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IRestaurant } from '../../interfaces/IRestaurant';
 
 @Component({
   selector: 'app-card',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
 
+  private _restaurant: IRestaurant;
+
+  constructor(){
+    this._restaurant = {}
+  }
+
+  @Input() set restaurant(value: IRestaurant){
+    this._restaurant = value;
+  }
+  get restaurant(){
+    return this._restaurant;
+  }
 }

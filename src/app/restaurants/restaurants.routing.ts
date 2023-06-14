@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { InitComponent } from './pages/init/init.component';
 
 const routes: Routes = [
-    { path: '', component: InitComponent }
+    { path: '', component: InitComponent, data: { title: 'Restaurantes' } }
 ];
 
 @NgModule({
     imports: [CommonModule, RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class RestaurantsRoutingModule {}
+export class RestaurantsRoutingModule { }
