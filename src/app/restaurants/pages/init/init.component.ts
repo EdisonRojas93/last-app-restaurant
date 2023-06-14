@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RestaurantsService } from '../../services/restaurants.service';
 import { Observable, Subscription } from 'rxjs';
-import { IRestaurant } from '../../interfaces/IRestaurant';
+import { IRestaurant } from '../../../core/interfaces/IRestaurant';
+import { RestaurantStore } from '@app/app/core/store/restaurant-store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-init',
@@ -13,17 +15,22 @@ export class InitComponent implements OnInit, OnDestroy {
   restaurants$: Observable<IRestaurant[]> | undefined;
   permissionsLocationSub: Subscription | undefined;
 
-  constructor(private readonly restaurantService: RestaurantsService) {
+  constructor(
+    private readonly restaurantService: RestaurantsService,
+    private readonly restaurantStore: RestaurantStore,
+    private readonly router: Router
+  ) {
   }
 
   ngOnInit(): void {
     this.get();
 
-    this.permissionsLocationSub = this.restaurantService.permissionsLocationObserver().subscribe(accepted => {
-      if (accepted) {
-        this.get();
-      }
-    })
+    this.permissionsLocationSub = this.restaurantService.permissionsLocationObserver()
+      .subscribe(accepted => {
+        if (accepted) {
+          this.get();
+        }
+      })
   }
 
   ngOnDestroy(): void {
@@ -32,6 +39,11 @@ export class InitComponent implements OnInit, OnDestroy {
 
   get() {
     this.restaurants$ = this.restaurantService.get();
+  }
+
+  selected(restaurant: IRestaurant) {
+    this.restaurantStore.setState(restaurant);
+    this.router.navigateByUrl(`${restaurant.id}/catalog`)
   }
 
 }

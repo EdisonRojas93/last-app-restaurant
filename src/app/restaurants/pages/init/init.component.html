@@ -1,10 +1,12 @@
-<div class="container">
 
     <h1>Restaurantes</h1>
-    <ng-container *ngIf="restaurants$ | async as restaurants; else error">
-        <app-card [restaurant]="restaurant" *ngFor="let restaurant of restaurants"></app-card>
-    </ng-container>
-    <ng-template #error>Error al consultar</ng-template>
+
+    <div class="list">
+        <ng-container *ngIf="restaurants$ | async as restaurants; else error">
+            <app-card (click)="selected(restaurant)" [restaurant]="restaurant" *ngFor="let restaurant of restaurants"></app-card>
+        </ng-container>
+        <ng-template #error>Error al consultar</ng-template>
+    </div>
     
-</div>
+
 

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@app/environments/environment'
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { IRestaurant } from '../interfaces/IRestaurant';
+import { IRestaurant } from '../../core/interfaces/IRestaurant';
 @Injectable()
 export class RestaurantsService {
 

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IRestaurant } from '../../interfaces/IRestaurant';
+import { IRestaurant } from '../../../core/interfaces/IRestaurant';
 
 @Component({
   selector: 'app-card',

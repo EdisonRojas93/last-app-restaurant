@@ -1,6 +1,5 @@
 .card {
-    min-width: 16rem;
-    max-width: 20rem;
+   
     width: 100%;
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
@@ -8,7 +7,7 @@
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform .5s;
+    cursor: pointer;
 
     &__banner {
         width: 100%;
@@ -38,11 +37,7 @@
     }
 
     &__name {
-        font-size: 1rem;
-        color: var(--primary);
-        font-weight: 500;
         text-transform: uppercase;
-        line-height: 1.125rem;
     }
 
     &__description {
@@ -73,10 +68,6 @@
 
     }
 
-    &:hover,
-    &:focus {
-        transform: scale3d(1.006, 1.006, 1);
-    }
-
+    
 }
 
