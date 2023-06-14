@@ -12,6 +12,18 @@ body{
 
 }
 
+h1{
+    font-size: 1.125rem;
+    color: var(--primary);
+    font-weight: 500px;
+}
+
+h2{
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 500px;
+}
+
 :root {
     --white: #FFFFFF;
     --yellow: #FFFF00;
@@ -20,4 +32,5 @@ body{
     --bg-secondary: #FFFFFF;
     --neutral: #A8A8C8;
     --accent: rgba(38, 38, 56, 0.85);
+    --secondary: #302F66;
 }
