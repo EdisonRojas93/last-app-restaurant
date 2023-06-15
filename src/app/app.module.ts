@@ -1,15 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import {NgIconsModule,} from '@ng-icons/core';
-import { heroUsers } from '@ng-icons/heroicons/outline';
+import { AppRoutingModule } from './app.routing';
+import { NgIconsModule, } from '@ng-icons/core';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { 
+  heroStar, 
+  heroMapPin, 
+  heroMinus, 
+  heroPlus, 
+  heroMagnifyingGlass,
+  heroXMark,
+  heroChevronRight,
+  heroChevronLeft,
+ } from '@ng-icons/heroicons/outline';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    NgIconsModule.withIcons({heroUsers})
+    AppRoutingModule,
+    NgIconsModule.withIcons(
+      {
+        heroStar,
+        heroMapPin,
+        heroMinus,
+        heroPlus,
+        heroMagnifyingGlass,
+        heroXMark,
+        heroChevronRight,
+        heroChevronLeft,
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]

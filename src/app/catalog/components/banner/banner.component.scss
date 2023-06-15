@@ -1,0 +1,76 @@
+.banner{
+    &__image{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 140px;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 2rem;
+    }
+
+    &__button{
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        background-color: var(--accent);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    &__content {
+        position: relative;
+        padding: 0.5rem 2rem 1rem;
+        display: flex;
+        gap: 1rem;
+        
+
+    }
+
+    &__logo {
+        width: 4.8rem;
+        height: 4.62rem;
+        border-radius: 25%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: -2.31rem;
+
+    }
+
+    &__name {
+        text-transform: uppercase;
+    }
+
+    &__description {
+        font-size: 0.75rem;
+        color: var(--neutral);
+        line-height: 1rem;
+    }
+
+    &__detail {
+        display: flex;
+        gap: 1rem;
+        color: var(--neutral);
+        padding-top: 0.5rem;
+    }
+
+    &__raking {
+        font-size: 0.5rem;
+        display: flex;
+        gap: 0.2rem;
+        align-items: center;
+    }
+
+    &__location {
+        font-size: 0.5rem;
+        display: flex;
+        gap: 0.2rem;
+        align-items: center;
+    }
+}

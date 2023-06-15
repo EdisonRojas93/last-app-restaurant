@@ -1,0 +1,19 @@
+<div class="product__image" [style.background-image]="getImg()">
+</div>
+<div class="product__name">{{product.name}}</div>
+<div class="product__actions">
+    <div class="product__price">
+        {{product.price | currency: 'EUR': 'symbol':'1.2-2'}}
+    </div>
+    <div class="product__add">
+        <div (click)="order('-')" class="product__button product--button-secondary" *ngIf="cant > 0">
+            <ng-icon name="heroMinus" size="18"></ng-icon>
+        </div>
+        <div *ngIf="cant > 0" class="product__cant">{{cant}}</div>
+        <div (click)="order('+')"  class="product__button product--button-primary">
+            <ng-icon name="heroPlus" size="18"></ng-icon>
+        </div>
+
+    </div>
+
+</div>

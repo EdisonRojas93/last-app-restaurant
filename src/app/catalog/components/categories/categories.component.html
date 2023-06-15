@@ -1,0 +1,11 @@
+<div class="category">
+    <div class="category__group">
+        <button [class.category__item--active]="active === i" class="category__item"
+            *ngFor="let category of categories | async; let i = index" 
+            (click)="selected(category.name, i)"
+            >
+            {{category.name}}
+        </button>
+
+    </div>
+</div>

@@ -15,21 +15,25 @@ body{
 h1{
     font-size: 1.125rem;
     color: var(--primary);
-    font-weight: 500px;
+    font-weight: 500;
+    line-height: 1.125rem;
 }
 
 h2{
     font-size: 1rem;
     color: var(--primary);
-    font-weight: 500px;
+    font-weight: 500;
+    line-height: 1.125rem;
 }
 
 :root {
     --white: #FFFFFF;
     --yellow: #FFFF00;
     --primary: #262638;
-    --bg: #F5F5F5;
-    --gray: #A8A8C8;
-    --accent: rgba(38, 38, 56, 0.85);
     --secondary: #302F66;
+    --bg-primary: #F5F5F5;
+    --bg-secondary: #FFFFFF;
+    --neutral: #A8A8C8;
+    --accent: rgba(38, 38, 56, 0.85);
+    --gray:  #F9F9FB;
 }

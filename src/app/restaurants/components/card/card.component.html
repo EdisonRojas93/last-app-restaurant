@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card__banner" [style.background-image]="'url('+ restaurant.image +')'">
+    </div>
+    <div class="card__content">
+        <div class="card__logo" [style.background-image]="'url('+ restaurant.logo +')'">
+        </div>
+        <div class="card__info">
+            <div class="card__name"><h2>{{restaurant.name}}</h2></div>
+            <div class="card__description">Comida rápida</div>
+            <div class="card__detail">
+                <div class="card__raking">
+                    <ng-icon name="heroStar" size="12"></ng-icon> 
+                    <span>{{restaurant.ratings?.average}} {{'('+ (restaurant.ratings?.total | number) +')'}}</span>
+                </div>
+                <div *ngIf="restaurant.coordinates?.distance" class="card__location"><ng-icon name="heroMapPin" size="12"></ng-icon> {{restaurant.coordinates?.distance | number}} km</div>
+            </div>
+        </div>
+    </div>
+</div>

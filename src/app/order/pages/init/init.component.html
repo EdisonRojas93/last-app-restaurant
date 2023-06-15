@@ -1,0 +1,5 @@
+<app-completed *ngIf="isPaid; else pay"></app-completed>
+<ng-template #pay>
+    <app-resume  [total]="getTotal()" [restaurant]="getRestaurant()" [order]="getOrder()" (handlerPay)="paid()"></app-resume>
+</ng-template>
+

@@ -1,0 +1,73 @@
+.card {
+   
+    width: 100%;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    &__banner {
+        width: 100%;
+        height: 9.3rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &__content {
+        position: relative;
+        padding: 0.5rem 0.75rem 1rem;
+        display: flex;
+        gap: 1rem;
+
+    }
+
+    &__logo {
+        width: 3.57rem;
+        height: 3.43rem;
+        border-radius: 25%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: -1.715rem;
+
+    }
+
+    &__name {
+        text-transform: uppercase;
+    }
+
+    &__description {
+        font-size: 0.75rem;
+        color: var(--neutral);
+        line-height: 1rem;
+    }
+
+    &__detail {
+        display: flex;
+        gap: 1rem;
+        color: var(--neutral);
+        padding-top: 0.5rem;
+    }
+
+    &__raking {
+        font-size: 0.5rem;
+        display: flex;
+        gap: 0.2rem;
+        align-items: center;
+    }
+
+    &__location {
+        font-size: 0.5rem;
+        display: flex;
+        gap: 0.2rem;
+        align-items: center;
+
+    }
+
+    
+}
+

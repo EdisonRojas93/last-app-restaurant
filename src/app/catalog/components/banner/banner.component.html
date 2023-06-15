@@ -1,0 +1,28 @@
+<div class="banner__image" [style.background-image]="'url('+restaurant?.image+')'">
+    
+    <div class="banner__button" (click)="back()">
+        <ng-icon name="heroChevronLeft" size="19" color="#FFFFFF"></ng-icon>
+    </div>
+    <div class="banner__button"  (click)="search()">
+        <ng-icon  name="heroMagnifyingGlass" size="19" color="#FFFFFF"></ng-icon>
+    </div>
+</div>
+<div class="banner__content">
+    <div class="banner__logo" [style.background-image]="'url('+restaurant?.logo+')'"></div>
+    <div class="banner__info">
+        <div class="banner__name"><h2>{{restaurant?.name}}</h2></div>
+        <div class="banner__description">Comida rápida</div>
+        <div class="banner__detail">
+            <div class="banner__raking">
+                <ng-icon name="heroStar" size="12"></ng-icon> 
+                <span>{{restaurant?.ratings?.average}} {{'('+ (restaurant?.ratings?.total | number) +')'}}</span>
+            </div>
+            <div *ngIf="restaurant?.coordinates?.distance" class="banner__location"><ng-icon name="heroMapPin" size="12"></ng-icon> {{restaurant?.coordinates?.distance | number}} km</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
