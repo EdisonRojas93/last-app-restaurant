@@ -83,9 +83,13 @@ export class InitComponent implements OnInit, OnDestroy {
     sections.forEach((section: HTMLElement, index: number) => {
       const rect = section.getBoundingClientRect();   
       
-      if (rect.top <= 200 && rect.top > 0 ) {
+      if (rect.top <= 160 && rect.top > 0 ) {
         this.activeCategory = index; 
       }
     });
+  }
+
+  pay(){
+    this.router.navigateByUrl('/pago');
   }
 }

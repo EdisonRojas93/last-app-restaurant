@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CatalogService } from './services/catalog.service';
 import { SearchComponent } from './pages/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderModule } from '../shared/components/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CatalogRoutingModule,
     NgIconsModule,
     HttpClientModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+  LoaderModule],
   exports: [],
   providers: [CatalogService],
 })

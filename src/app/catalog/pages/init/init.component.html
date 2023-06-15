@@ -3,12 +3,18 @@
     <app-categories [categories]="catalog$" [active]="activeCategory" (handlerSelect)="filterCategory($event)"></app-categories>
 </div>
 
-<ng-container *ngFor="let item of catalog$ |async">
-    <section class="products" [id]="item.name">
-        <app-product-buy (handlerOrder)="order($event)" [product]="product" *ngFor="let product of item.products">
-        </app-product-buy>
-    </section>
+<ng-container *ngIf="catalog$ | async as catalog; else loading" >
+    <ng-container *ngFor="let item of catalog">
+        <section class="products" [id]="item.name">
+            <app-product-buy (handlerOrder)="order($event)" [product]="product" *ngFor="let product of item.products">
+            </app-product-buy>
+        </section>
+    </ng-container>
+    
 </ng-container>
+<ng-template #loading>
+<app-loader></app-loader>
+</ng-template>
 
 
-<button *ngIf="totalOrder > 0" class="order">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>
+<button *ngIf="totalOrder > 0" class="order" (click)="pay()">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>

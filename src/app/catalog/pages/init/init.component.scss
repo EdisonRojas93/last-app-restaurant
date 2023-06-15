@@ -8,7 +8,7 @@
 
 .categories{
     position: sticky;
-    top: 0px;
+    top: 3.8rem;
     background-color: var(--bg-secondary);
     padding: 0 2rem;
 }
@@ -17,7 +17,7 @@
     padding: 0 2rem;
     display: grid;
     gap: 1.3rem;
-    grid-template-columns: repeat(auto-fit, max(152px));
+    grid-template-columns: repeat(auto-fill, max(152px));
     justify-content: center;
 
     & ~ .products{

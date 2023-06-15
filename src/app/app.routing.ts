@@ -11,6 +11,10 @@ const routes: Routes = [
         loadChildren: ()=> import('./catalog/catalog.module').then(m=>m.CatalogModule)
     },
     {
+        path: 'pago',
+        loadChildren: ()=> import('./order/order.module').then(m=>m.OrderModule)
+    },
+    {
         path: '',
         redirectTo: '/restaurantes',
         pathMatch: 'full'

@@ -1,0 +1,17 @@
+<div class="order-summary">
+    <h1>Resumen de tu Pedido</h1>
+
+    <div class="order-item" *ngFor="let product of order |async">
+       
+        <div class="item-image" [style.background-image]="'url('+product.image+')'"></div>
+        <div class="item-details">
+            <h2>{{product.name}}</h2>
+            <div>Cantidad: {{product.cant}}</div>
+            <div>Precio: <strong>{{product.price | currency: "EUR"}}</strong></div>
+        </div>
+    </div>
+
+    <h1 style="margin-top: 1rem;">Total:<strong> {{total | async | currency: 'EUR'}}</strong></h1>
+
+    <button class="pay-btn" (click)="pay()">Pagar</button>
+</div>

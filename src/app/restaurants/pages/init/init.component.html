@@ -2,10 +2,12 @@
     <h1>Restaurantes</h1>
 
     <div class="list">
-        <ng-container *ngIf="restaurants$ | async as restaurants; else error">
+        <ng-container *ngIf="restaurants$ | async as restaurants; else loading">
             <app-card (click)="selected(restaurant)" [restaurant]="restaurant" *ngFor="let restaurant of restaurants"></app-card>
         </ng-container>
-        <ng-template #error>Error al consultar</ng-template>
+        <ng-template #loading>
+           <app-loader></app-loader>
+        </ng-template>
     </div>
     
 

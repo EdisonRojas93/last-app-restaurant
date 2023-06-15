@@ -16,10 +16,8 @@ export class ProductBuyComponent implements OnInit {
   imageUrl: string = '';
 
   ngOnInit(): void {
-
-    
     this.cant = this.product?.cant || 0;
-    this.product.image = `url('${this.product?.image}'), url('https://bibliobus.dipcas.es/BibliobusWeb/imagen/producto/20971?pfdrid_c=true')`
+  
   }
 
   order(action: string){
@@ -31,8 +29,7 @@ export class ProductBuyComponent implements OnInit {
     })
   }
 
-  errorLoadImg(image: any){
-    console.log('paila no cargo');
-    
-  }
+ getImg(){
+  return `url('${this.product?.image}'), url('https://bibliobus.dipcas.es/BibliobusWeb/imagen/producto/20971?pfdrid_c=true')`
+ }
 }

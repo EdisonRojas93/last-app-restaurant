@@ -59,7 +59,8 @@ export class CatalogService {
 
     if (product.cant > 0)
       this._order.push(product);
-
+    console.log(this._order);
+    
     this.updateStore();
 
   }
