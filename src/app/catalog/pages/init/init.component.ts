@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IRestaurant } from '@app/app/core/interfaces/IRestaurant';
 import { RestaurantStore } from '@app/app/core/store/restaurant-store';
@@ -19,26 +19,32 @@ export class InitComponent implements OnInit, OnDestroy {
 
   totalOrder: number = 0;
   restaurant: IRestaurant | undefined
-  catalog$:Observable<ICatalog[]> = of([]);
-
+  catalog$: Observable<ICatalog[]> = of([]);
+  activeCategory: number = 0;
   catalogStoreSub: Subscription | undefined;
   searchOpen: boolean = false;
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private restaurantStore: RestaurantStore,
     private catalogService: CatalogService,
     private CatalogStore: CatalogStore,
-    ){   
+    private elementRef: ElementRef
+  ) {
   }
- 
+
 
   ngOnInit(): void {
-    this.restaurantStore.getState().subscribe((restaurant: IRestaurant)=>{
+    this.restaurantStore.getState().subscribe((restaurant: IRestaurant) => {
+      if(!restaurant){
+          this.router.navigateByUrl('/restaurantes');
+          return
+      }
+      
       this.restaurant = restaurant;
       this.catalog$ = this.catalogService.get(this.id);
     });
 
-    this.catalogStoreSub = this.CatalogStore.getTotal().subscribe((total: number)=> {
+    this.catalogStoreSub = this.CatalogStore.getTotal().subscribe((total: number) => {
       this.totalOrder = total
     });
   }
@@ -47,17 +53,37 @@ export class InitComponent implements OnInit, OnDestroy {
     this.catalogStoreSub?.unsubscribe();
   }
 
-  order(product: IOrder){
-    this.catalogService.updateOrder(product)
+  order(product: IOrder) {
+    console.log(product);
     
+    this.catalogService.updateOrder(product)
   }
 
-  back(){
+  back() {
     this.router.navigateByUrl('/restaurantes');
   }
 
-  search(){
+  search() {
     this.router.navigateByUrl(`/restaurante/${this.id}/buscar`);
   }
 
+  filterCategory(name: string) {
+    const section = this.elementRef.nativeElement.querySelector(`#${name}`);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth',block: 'start'  });
+    }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    const sections = document.querySelectorAll('section'); // Selector de las secciones
+   
+    sections.forEach((section: HTMLElement, index: number) => {
+      const rect = section.getBoundingClientRect();   
+      
+      if (rect.top <= 200 && rect.top > 0 ) {
+        this.activeCategory = index; 
+      }
+    });
+  }
 }

@@ -1,10 +1,14 @@
 <app-banner [restaurant]="restaurant" (handlerBack)="back()" (handlerSearch)="search()"></app-banner>
-<div class="catalog" *ngFor="let item of catalog$ |async">
-    <h1>{{item.name}}</h1>
-    <div class="products">
-        <app-product-buy (handlerOrder)="order($event)" [product]="product" *ngFor="let product of item.products"></app-product-buy>
-    </div>
+<div class="categories">
+    <app-categories [categories]="catalog$" [active]="activeCategory" (handlerSelect)="filterCategory($event)"></app-categories>
 </div>
 
-<button *ngIf="totalOrder > 0" class="order">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>
+<ng-container *ngFor="let item of catalog$ |async">
+    <section class="products" [id]="item.name">
+        <app-product-buy (handlerOrder)="order($event)" [product]="product" *ngFor="let product of item.products">
+        </app-product-buy>
+    </section>
+</ng-container>
 
+
+<button *ngIf="totalOrder > 0" class="order">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>

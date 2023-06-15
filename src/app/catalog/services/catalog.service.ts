@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ICatalog, IProduct } from '@app/app/core/interfaces/ICatalog';
 import { IOrder } from '@app/app/core/interfaces/IOrder';
 import { CatalogStore } from '@app/app/core/store/catalog-store';
 import { environment } from '@app/environments/environment';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map, merge, mergeMap, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class CatalogService {
@@ -14,13 +15,37 @@ export class CatalogService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly catalogStore: CatalogStore
+    private readonly catalogStore: CatalogStore,
   ) {
   }
 
   get(id: string): Observable<ICatalog[]> {
     return this.http.get<ICatalog[]>(`${environment.api}/restaurants/${id}/catalog`)
-      .pipe(tap((catalog: ICatalog[]) => this.catalogStore.setCatalog(catalog)));
+      .pipe(
+        mergeMap((catalog: ICatalog[]) => this.catalogStore.getOrder()
+          .pipe(
+            map((order: IOrder[]) => {
+              let updateCatalog: ICatalog[] = catalog;
+              updateCatalog = catalog.map((c: ICatalog) => {
+                c.products.map((p: IProduct) => {
+                  order.map((o: IOrder) => {
+                    if (p.name === o.name) {
+                      p.cant = o.cant;
+                    }
+
+                  })
+                  return p;
+                })
+
+                return c
+              })
+
+              return updateCatalog;
+            })
+          )
+        ),
+        tap((catalog: ICatalog[]) => this.catalogStore.setCatalog(catalog))
+      )
   }
 
   updateOrder(product: IOrder,) {

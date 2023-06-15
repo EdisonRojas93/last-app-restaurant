@@ -4,11 +4,22 @@
     padding-bottom: 7rem;
 }
 
+.categories{
+    position: sticky;
+    top: 0px;
+    background-color: var(--bg-secondary);
+}
+
 .products {
+   
     display: grid;
-    gap: 1.25rem;
+    gap: 1.3rem;
     grid-template-columns: repeat(auto-fill, max(152px));
     justify-content: center;
+
+    & ~ .products{
+        padding-top: 1.3rem;
+    }
 }
 
 .order {

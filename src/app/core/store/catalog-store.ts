@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { IOrder } from '../interfaces/IOrder';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ICatalog } from '../interfaces/ICatalog';
+import { CatalogService } from '@app/app/catalog/services/catalog.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,27 +13,35 @@ export class CatalogStore {
   private total$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private catalog$: BehaviorSubject<ICatalog[]> = new BehaviorSubject<ICatalog[]>([]);
 
-  getOrder():Observable<IOrder[]>{
-  return this.order$.asObservable();
+  private id!: string
+  isInit: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute) {
+    this.id = route.snapshot.paramMap.get('id') || '';
   }
 
-  getTotal():Observable<number>{
+  getOrder(): Observable<IOrder[]> {
+    return this.order$.asObservable();
+  }
+
+  getTotal(): Observable<number> {
     return this.total$.asObservable();
   }
 
-  getCatalog(): Observable<ICatalog[]>{
+  getCatalog(): Observable<ICatalog[]> {
     return this.catalog$.asObservable();
   }
 
-  setOrder(order:IOrder[]):void{
+  setOrder(order: IOrder[]): void {
     this.order$.next(order);
   }
 
-  setTotal(total: number): void{
+  setTotal(total: number): void {
     this.total$.next(total);
   }
 
-  setCatalog(catalog: ICatalog[]){
+  setCatalog(catalog: ICatalog[]) {
     this.catalog$.next(catalog)
   }
 

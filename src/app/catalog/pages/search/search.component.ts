@@ -40,10 +40,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   close() {
-    this.router.navigateByUrl(`/restaurante/${this.id}`)
+    this.router.navigateByUrl(`/restaurante/${this.id}/catalogo`)
   }
 
   select(product: IProduct) {
-    console.log(product);
+    this.catalogService.updateOrder({
+      ...product,
+      cant: 1
+    })
+    this.router.navigateByUrl(`/restaurante/${this.id}/catalogo`)
   }
 }
