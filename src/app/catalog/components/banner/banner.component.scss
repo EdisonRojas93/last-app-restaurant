@@ -4,6 +4,23 @@
         background-repeat: no-repeat;
         background-size: cover;
         height: 140px;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 2rem;
+    }
+
+    &__button{
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        background-color: var(--accent);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
     }
 
     &__content {

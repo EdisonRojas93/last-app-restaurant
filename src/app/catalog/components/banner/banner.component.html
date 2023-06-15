@@ -1,4 +1,11 @@
 <div class="banner__image" [style.background-image]="'url('+restaurant?.image+')'">
+    
+    <div class="banner__button" (click)="back()">
+        <ng-icon name="heroChevronLeft" size="19" color="#FFFFFF"></ng-icon>
+    </div>
+    <div class="banner__button"  (click)="search()">
+        <ng-icon  name="heroMagnifyingGlass" size="19" color="#FFFFFF"></ng-icon>
+    </div>
 </div>
 <div class="banner__content">
     <div class="banner__logo" [style.background-image]="'url('+restaurant?.logo+')'"></div>

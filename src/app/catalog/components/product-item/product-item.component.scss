@@ -1,0 +1,51 @@
+:host{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.product{
+
+    display: flex;
+    gap: 1rem;
+    font-family: inherit;
+
+    &__image{
+        width: 3.75rem;
+        height: 2.96rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 0.56rem;
+    }
+
+    &__name{
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        color: var(--primary);
+    }
+
+    &__price{
+        font-weight: 600;
+        font-size: 0.875rem;
+
+    }
+
+    &__action{
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        background-color: var(--accent);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__icon{
+        position: absolute;
+        left: 0.55rem;
+        top: 0.4rem;
+    }
+}

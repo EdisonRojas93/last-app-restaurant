@@ -4,7 +4,7 @@ import { ICatalog, IProduct } from '@app/app/core/interfaces/ICatalog';
 import { IOrder } from '@app/app/core/interfaces/IOrder';
 import { CatalogStore } from '@app/app/core/store/catalog-store';
 import { environment } from '@app/environments/environment';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable()
 export class CatalogService {
@@ -49,6 +49,26 @@ export class CatalogService {
 
     this.catalogStore.setOrder(this._order);
     this.catalogStore.setTotal(this._total);
+  }
+
+  filter(term: string): Observable<ICatalog[]> {
+    return this.catalogStore.getCatalog()
+      .pipe(
+        tap((data) => console.log(data)),
+        map((catalog: ICatalog[]): ICatalog[] => {
+          return catalog.reduce((filteredData: ICatalog[], catalog: ICatalog) => {
+            const filteredProducts = catalog.products.filter(p => p.name.toLocaleLowerCase().includes(term));
+
+            if (filteredProducts.length > 0) {
+              filteredData.push({ name: catalog.name, products: filteredProducts });
+            }
+
+            return filteredData;
+
+          }, [])
+        }),
+        tap((data) => console.log(data))
+      );
   }
 
 }

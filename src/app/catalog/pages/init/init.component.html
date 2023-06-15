@@ -1,5 +1,4 @@
-<app-banner [restaurant]="restaurant"></app-banner>
-
+<app-banner [restaurant]="restaurant" (handlerBack)="back()" (handlerSearch)="search()"></app-banner>
 <div class="catalog" *ngFor="let item of catalog$ |async">
     <h1>{{item.name}}</h1>
     <div class="products">
@@ -8,3 +7,4 @@
 </div>
 
 <button *ngIf="totalOrder > 0" class="order">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>
+

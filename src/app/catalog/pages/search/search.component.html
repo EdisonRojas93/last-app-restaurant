@@ -1,0 +1,17 @@
+<div class="search">
+    <div class="search__input-content">
+        <ng-icon class="search__icon-Magnifying" name="heroMagnifyingGlass" size="24" color="#262638"></ng-icon>
+        <input type="text" class="search__input" [formControl]="searchControl">
+        <div class="search__icon-x" (click)="close()">
+            <ng-icon name="heroXMark" color="#262638" size="24"></ng-icon>
+        </div>
+    </div>
+
+</div>
+
+<div class="search__result">
+    <ng-container *ngFor="let item of resultFilter$ | async">
+        <app-product-item (handlerSelect)="select($event)" [product]="product"
+            *ngFor="let product of item.products"></app-product-item>
+    </ng-container>
+</div>

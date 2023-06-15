@@ -6,20 +6,28 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductBuyComponent } from './components/product-buy/product-buy.component';
 import { CatalogRoutingModule } from './catalog.routing';
-import {NgIconsModule} from '@ng-icons/core'
+import { NgIconsModule } from '@ng-icons/core'
 import { HttpClientModule } from '@angular/common/http';
 import { CatalogService } from './services/catalog.service';
+import { SearchComponent } from './pages/search/search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [
+  declarations: [
     InitComponent,
     BannerComponent,
     CategoriesComponent,
     ProductItemComponent,
-    ProductBuyComponent
+    ProductBuyComponent,
+    SearchComponent
   ],
-    imports: [ CommonModule, CatalogRoutingModule, NgIconsModule, HttpClientModule ],
-    exports: [],
-    providers: [CatalogService],
+  imports: [
+    CommonModule,
+    CatalogRoutingModule,
+    NgIconsModule,
+    HttpClientModule,
+    ReactiveFormsModule],
+  exports: [],
+  providers: [CatalogService],
 })
-export class CatalogModule {}
+export class CatalogModule { }

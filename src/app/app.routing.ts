@@ -7,7 +7,7 @@ const routes: Routes = [
         loadChildren: () => import('./restaurants/restaurants.module').then(m => m.RestaurantsModule)
     },
     {
-        path: 'restaurante/:id/catalogo',
+        path: 'restaurante/:id',
         loadChildren: ()=> import('./catalog/catalog.module').then(m=>m.CatalogModule)
     },
     {

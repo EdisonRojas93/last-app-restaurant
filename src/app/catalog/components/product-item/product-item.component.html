@@ -1,1 +1,14 @@
-<p>product-item works!</p>
+<div class="product">
+    <div class="product__image" [style.background-image]="'url('+product?.image">
+    </div>
+
+    <div class="product__info">
+        <div class="product__name">{{product?.name}}</div>
+        <div class="product__price">{{product?.price | currency: 'EUR'}}</div>
+
+    </div>
+</div>
+
+<div class="product__action" (click)="select()">
+    <ng-icon class="product__icon" name="heroChevronRight" size="16" color="#FFFFFF"></ng-icon>
+</div>

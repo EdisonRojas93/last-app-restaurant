@@ -4,7 +4,7 @@ import { IRestaurant } from '@app/app/core/interfaces/IRestaurant';
 import { RestaurantStore } from '@app/app/core/store/restaurant-store';
 import { CatalogService } from '../../services/catalog.service';
 import { ICatalog } from '@app/app/core/interfaces/ICatalog';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { IOrder } from '@app/app/core/interfaces/IOrder';
 import { CatalogStore } from '@app/app/core/store/catalog-store';
 
@@ -19,8 +19,10 @@ export class InitComponent implements OnInit, OnDestroy {
 
   totalOrder: number = 0;
   restaurant: IRestaurant | undefined
-  catalog$:Observable<ICatalog[]> | undefined
+  catalog$:Observable<ICatalog[]> = of([]);
+
   catalogStoreSub: Subscription | undefined;
+  searchOpen: boolean = false;
 
   constructor(private router: Router, 
     private restaurantStore: RestaurantStore,
@@ -50,8 +52,12 @@ export class InitComponent implements OnInit, OnDestroy {
     
   }
 
-  remove(e: any){
-    console.log(e);
-    
+  back(){
+    this.router.navigateByUrl('/restaurantes');
   }
+
+  search(){
+    this.router.navigateByUrl(`/restaurante/${this.id}/buscar`);
+  }
+
 }
