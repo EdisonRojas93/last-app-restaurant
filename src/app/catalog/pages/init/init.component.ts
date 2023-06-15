@@ -35,7 +35,9 @@ export class InitComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.restaurantStore.getState().subscribe((restaurant: IRestaurant) => {
-      if(!restaurant){
+      console.log('Hola', restaurant);
+      
+      if(Object.keys(restaurant).length === 0 ){
           this.router.navigateByUrl('/restaurantes');
           return
       }

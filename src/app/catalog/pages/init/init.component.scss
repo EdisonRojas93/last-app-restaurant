@@ -2,19 +2,22 @@
     display: block;
     position: relative;
     padding-bottom: 7rem;
+    max-width: 993px;
+    margin: 0 auto;
 }
 
 .categories{
     position: sticky;
     top: 0px;
     background-color: var(--bg-secondary);
+    padding: 0 2rem;
 }
 
 .products {
-   
+    padding: 0 2rem;
     display: grid;
     gap: 1.3rem;
-    grid-template-columns: repeat(auto-fill, max(152px));
+    grid-template-columns: repeat(auto-fit, max(152px));
     justify-content: center;
 
     & ~ .products{
@@ -25,8 +28,9 @@
 .order {
     position: fixed;
     bottom: 2rem;
-    width: 90%;
-    left: 5%;
+    width: calc(100% - 64px);
+    max-width: calc(992px - 32px);
+    left: 2rem;
     background-color: var(--primary);
     color: var(--white);
     font-size: 1.125rem;
@@ -36,4 +40,8 @@
     line-height: 1.5rem;
     font-weight: 500;
     font-family: inherit;
+
+    @media (min-width: 992px){
+        left: calc((100vw - 992px) / 2);
+    }
 }

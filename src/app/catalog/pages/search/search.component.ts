@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   search(term: string) {
-    this.resultFilter$ = this.catalogService.filter(term)
+    this.resultFilter$ = this.catalogService.filter(term);
   }
 
   close() {
