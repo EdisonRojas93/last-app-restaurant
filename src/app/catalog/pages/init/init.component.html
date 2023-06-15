@@ -1,1 +1,10 @@
-<p>init works!</p>
+<app-banner [restaurant]="restaurant"></app-banner>
+
+<div class="catalog" *ngFor="let item of catalog$ |async">
+    <h1>{{item.name}}</h1>
+    <div class="products">
+        <app-product-buy (handlerOrder)="order($event)" [product]="product" *ngFor="let product of item.products"></app-product-buy>
+    </div>
+</div>
+
+<button *ngIf="totalOrder > 0" class="order">total {{'('+ (totalOrder | currency: 'EUR') + ")"}}</button>

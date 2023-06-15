@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import {NgIconsModule,} from '@ng-icons/core';
-import { heroStar, heroMapPin } from '@ng-icons/heroicons/outline';
+import { heroStar, heroMapPin, heroMinus, heroPlus } from '@ng-icons/heroicons/outline';
 @NgModule({
   declarations: [
     AppComponent
@@ -11,7 +11,7 @@ import { heroStar, heroMapPin } from '@ng-icons/heroicons/outline';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgIconsModule.withIcons({heroStar, heroMapPin})
+    NgIconsModule.withIcons({heroStar, heroMapPin,heroMinus, heroPlus, })
   ],
   providers: [],
   bootstrap: [AppComponent]

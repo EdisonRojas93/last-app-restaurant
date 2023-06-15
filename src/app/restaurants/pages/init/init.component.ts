@@ -43,7 +43,7 @@ export class InitComponent implements OnInit, OnDestroy {
 
   selected(restaurant: IRestaurant) {
     this.restaurantStore.setState(restaurant);
-    this.router.navigateByUrl(`${restaurant.id}/catalog`)
+    this.router.navigateByUrl(`/restaurante/${restaurant.id}/catalogo`)
   }
 
 }
